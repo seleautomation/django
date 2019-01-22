@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Fresh Up | Login</title>
+
+        <link href="http://35.154.157.219/admin_assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://35.154.157.219/admin_assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+        <link href="http://35.154.157.219/admin_assets/css/animate.css" rel="stylesheet">
+        <link href="http://35.154.157.219/admin_assets/css/style.css" rel="stylesheet">
+
+    </head>
+    <body class="gray-bg">
+        <div class="text-right">
+          <h3><a href="{% url 'frontdesk:sign_up' %}" ><strong>SIGN UP</strong></a></h3>
+        </div>
+        <div class="middle-box text-center loginscreen animated fadeInDown">
+            <div>
+                <div>
+
+                    <h1 class="logo-name hide">My Site</h1>
+                </div>
+                <h3>Welcome to MySite</h3>
+                <p>Login in. To control in action.</p>
+                <div class="text-danger">
+                                                        </div>
+                <form class="m-t" role="form" id="loginForm" method="POST">
+                    <div class="form-group">
+                        <input type="Mobile" class="form-control" name="mobile_number" placeholder="Mobile Number" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+                </form>
+                <p class="m-t"> <small>MySite Version 1.0 &copy; 2019</small> </p>
+            </div>
+        </div>
+
+        <!-- Mainly scripts -->
+        <script src="http://35.154.157.219/admin_assets/js/jquery-2.1.1.js"></script>
+        <script src="http://35.154.157.219/admin_assets/js/bootstrap.min.js"></script>
+        <script src="http://35.154.157.219/admin_assets/js/loadingoverlay_progress.min.js"></script>
+        <script>
+            $(document).on("submit", "#loginForm", function () {
+                $.LoadingOverlay("show");
+            });
+        </script>
+    </body>
+
+</html>
