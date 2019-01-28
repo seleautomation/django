@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -9,11 +9,11 @@
 
         <title>Fresh Up | Login</title>
 
-        <link href="http://35.154.157.219/admin_assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="http://35.154.157.219/admin_assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="{% static 'frontdesk/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'frontdesk/font-awesome.css' %}" rel="stylesheet">
 
-        <link href="http://35.154.157.219/admin_assets/css/animate.css" rel="stylesheet">
-        <link href="http://35.154.157.219/admin_assets/css/style.css" rel="stylesheet">
+        <link href="{% static 'frontdesk/animate.css' %}" rel="stylesheet">
+        <link href="{% static 'frontdesk/style.css' %}" rel="stylesheet">
 
     </head>
     <body class="gray-bg">
@@ -28,16 +28,30 @@
                 </div>
                 <h3>Welcome to MySite</h3>
                 <p>Login in. To control in action.</p>
-                <div class="text-danger">
-                                                        </div>
-                <form class="m-t" role="form" id="loginForm" method="POST">
+                <div class="text-danger"></div>
+                {% if mobile_error %}
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ mobile_error_message }}
+                  </div>
+                {%  endif %}
+                {% if pass_error %}
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ password_error_message }}
+                  </div>
+                {%  endif %}
+                <form class="m-t" role="form" id="loginForm" action="{% url 'frontdesk:login' %}" method="POST">
+                  {% csrf_token %}
+                  {% for field in form %}
                     <div class="form-group">
-                        <input type="Mobile" class="form-control" name="mobile_number" placeholder="Mobile Number" required="">
+                        {{ field }}
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password" required="">
-                    </div>
-
+                  {% endfor %}
                     <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
                 </form>
                 <p class="m-t"> <small>MySite Version 1.0 &copy; 2019</small> </p>
@@ -45,14 +59,10 @@
         </div>
 
         <!-- Mainly scripts -->
-        <script src="http://35.154.157.219/admin_assets/js/jquery-2.1.1.js"></script>
-        <script src="http://35.154.157.219/admin_assets/js/bootstrap.min.js"></script>
-        <script src="http://35.154.157.219/admin_assets/js/loadingoverlay_progress.min.js"></script>
-        <script>
-            $(document).on("submit", "#loginForm", function () {
-                $.LoadingOverlay("show");
-            });
-        </script>
+        <script src="{% static 'frontdesk/jquery-2.1.1.js.download' %}"></script>
+        <script src="{% static 'frontdesk/bootstrap.min.js.download' %}"></script>
+        <script src="{% static 'frontdesk/loadingoverlay_progress.min.js.download' %}"></script>
+
     </body>
 
 </html>

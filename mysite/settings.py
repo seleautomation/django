@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
+    'phonenumber_field',
     'frontdesk.apps.FrontdeskConfig',
     'django.contrib.admin',
     'django.contrib.auth',
